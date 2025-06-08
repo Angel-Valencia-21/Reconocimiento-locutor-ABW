@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Identificación del Locutor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  
+  <header>
+      <img src="{{ url_for('static', filename='imagenes/TesiLogo.png') }}" alt="TESI">
+     <img src="{{ url_for('static', filename='imagenes/CidesiLogo.png') }}" alt="CIDESI">
+  </header>
+  <nav>
+    <a href="#">Acerca de nosotros</a>
+    <a href="#">Identificar locutor</a>
+    <a href="#">Audios</a>
+    <a href="#">Resultados</a>
+  </nav>
+
+  <div class="contenedor-identificacion">
+    <div class="botones">
+      <button class="btn" id="regresarBtn" onclick="window.location.href='index.html'">Regresar</button>
+      <label class="btn">
+        Subir archivo de audio
+        <input type="file" id="archivoAudio" accept=".wav" hidden>
+      </label>
+      <button class="btn" id="grabarBtn">Grabar audio</button>
+    </div>
+
+    <div class="paneles">
+      <div class="drop-area" id="drop-area">Arrastrar y soltar</div>
+      <canvas id="canvas">Espectograma</canvas>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

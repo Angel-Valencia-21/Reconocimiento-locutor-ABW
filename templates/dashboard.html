@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administración</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            background: linear-gradient(to bottom, #f8cfd0 0%, #f8cfd0 40%, #d2e6e8 100%);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .actions {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .actions a {
+            text-decoration: none;
+            background-color: #4cafaa;
+            color: white;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .actions a:hover {
+            background-color: #3b9998;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            table-layout: auto;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #d2e6e8;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .acciones a {
+            margin: 0 5px;
+            color: #4cafaa;
+            text-decoration: none;
+        }
+
+        .acciones a:hover {
+            text-decoration: underline;
+        }
+        th:nth-child(4), td:nth-child(4) {
+         min-width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Bienvenido, Administrador</h2>
+        <div class="actions">
+            <a href="/logout">Cerrar sesión</a>
+            <a href="/agregar">Agregar Usuario</a>
+            <a href="/exportar_csv">Exportar a CSV</a>
+            <a href="/exportar_json" target="_blank">Exportar a JSON</a>
+        </div>
+        <hr>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Permisos</th>
+                    <th>Audio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario[1] }}</td>
+                    <td>{{ usuario[2] }}</td>
+                    <td>{{ usuario[3] }}</td>
+                    <td>
+                        {% if usuario[4] %}
+                            <audio controls>
+                                <source src="{{ url_for('static', filename=usuario[4].split('static/')[-1]) }}" type="audio/wav">
+                                Tu navegador no soporta audio.
+                            </audio>
+                        {% else %}
+                            No disponible
+                        {% endif %}
+                    </td>
+                    <td class="acciones">
+                        <a href="/editar/{{ usuario[0] }}">Editar</a> |
+                        <a href="/eliminar/{{ usuario[0] }}" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

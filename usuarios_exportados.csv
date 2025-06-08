@@ -1,0 +1,4 @@
+ID,Nombre,Correo,Permisos,Ruta de Audio
+10,Brayan,bd5693937@gmail.com,"Escribir, Eliminar",static/audios/Brayan/522759__sarafg11__piano2_ex2_good_good.wav
+11,vale,valentin123@gmail.com,"Escribir, Eliminar",static/audios/vale/522759__sarafg11__piano2_ex2_good_good.wav
+12,Joseline,jos123@gmail.com,"Escribir, Eliminar",static/audios/Joseline/0a7c2a8d_nohash_0.wav

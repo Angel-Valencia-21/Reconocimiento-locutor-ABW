@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconocimiento del hablante</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<header>
+  <img src="{{ url_for('static', filename='imagenes/TesiLogo.png') }}" alt="TESI">
+  <img src="{{ url_for('static', filename='imagenes/CidesiLogo.png') }}" alt="CIDESI">
+</header>
+
+<nav>
+  <a href="#">Acerca de nosotros</a>
+  <a href="{{ url_for('identificar') }}">Identificar locutor</a>
+  <a href="#">Audios</a>
+  <a href="#">Resultados</a>
+</nav>
+
+<div class="main-content">
+  <h1>Reconocimiento del hablante</h1>
+  <button class="btn" onclick="window.location.href='{{ url_for('login') }}'">Iniciar sesión</button>
+  <a class="btn" href="{{ url_for('identificar') }}">Identificar locutor</a>
+
+
+</div>
+
+</body>
+</html>
