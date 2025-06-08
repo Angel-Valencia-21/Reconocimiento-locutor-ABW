@@ -34,6 +34,41 @@
     </div>
   </div>
 
+
+  <div class="modelo-selector">
+      <label for="modeloIA">Selecciona el modelo de IA:</label>
+      <select id="modeloIA">
+        <option value="modelo1">Modelo CNN</option>
+        <option value="modelo2">Modelo LSTM</option>
+        <option value="modelo3">Modelo GAN</option>
+      </select>
+      <button class="btn" id="btnUsarModelo">Usar modelo seleccionado</button>
+    </div>
+
+
+
+    
+  <div class="resultado-modelo" id="resultadoModelo" style="display: none;">
+    <h2>Resultados del Modelo</h2>
+    <div class="grafica-roc">
+      <h3>Curva ROC</h3>
+      <img id="imagenROC" src="" alt="Curva ROC" />
+    </div>
+    <div class="metricas">
+      <h3>Métricas del Modelo</h3>
+      <ul>
+        <li><strong>Métrica:</strong> <span id="metrica">-</span></li>
+        <li><strong>Precisión:</strong> <span id="precision">-</span></li>
+        <li><strong>Optimizador:</strong> <span id="optimizador">-</span></li>
+        <li><strong>Épocas:</strong> <span id="epocas">-</span></li>
+        <li><strong>Tamaño del dataset:</strong> <span id="dataset">-</span></li>
+        <li><strong>Tiempo de entrenamiento:</strong> <span id="tiempo">-</span></li>
+      </ul>
+    </div>
+  </div>
+
+
+
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

@@ -88,3 +88,47 @@ document.getElementById("archivoAudio").addEventListener("change", e => {
     alert("Por favor selecciona un archivo .wav");
   }
 });
+
+
+document.getElementById('btnUsarModelo').addEventListener('click', function () {
+  const modeloSeleccionado = document.getElementById('modeloIA').value;
+  console.log("Modelo seleccionado:", modeloSeleccionado);
+
+  // Aquí puedes enviar el modelo junto con el audio al backend
+  // Por ejemplo, si usas fetch:
+  /*
+  fetch('/identificar', {
+    method: 'POST',
+    body: JSON.stringify({ modelo: modeloSeleccionado, audio: archivo }),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data));
+  */
+});
+
+
+
+
+
+// Simula resultados del modelo
+document.getElementById('btnUsarModelo').addEventListener('click', function () {
+  const modeloSeleccionado = document.getElementById('modeloIA').value;
+  console.log("Modelo seleccionado:", modeloSeleccionado);
+
+  // Simula datos de resultado (puedes reemplazar esto cuando conectes con Flask)
+  document.getElementById('imagenROC').src = '/static/imagenes/roc_' + modeloSeleccionado + '.png';
+  document.getElementById('metrica').innerText = "AUC";
+  document.getElementById('precision').innerText = "94.7%";
+  document.getElementById('optimizador').innerText = "Adam";
+  document.getElementById('epocas').innerText = "50";
+  document.getElementById('dataset').innerText = "LibriSpeech (500 locutores)";
+  document.getElementById('tiempo').innerText = "1h 32min";
+
+  // Muestra la sección de resultados
+  document.getElementById('resultadoModelo').style.display = "block";
+});
+
+
+
+
